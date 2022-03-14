@@ -1,0 +1,53 @@
+{% extends 'base.html' %} {% load static %}
+<!-- Title -->
+{% block title %}Listagem |{% endblock %}
+<!-- listagem -->
+{% block content %}
+
+<div class="container" id="list-contacts">
+    {% include 'parciais/_messages.html' %}
+    <h1 class="mt-2 text-center">Minha Agenda</h1>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nome Completo</th>
+                <th scope="col">Telefone</th>
+                <th scope="col">E-mail</th>
+                <th scope="col">Categoria</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for contato in contatos %}
+            <tr>
+                <th scope="row">{{ contato.id }}</th>
+                <td><a href="{% url 'ver_contato' contato.id %}">{{ contato.nome_completo }}</a></td>
+                <td>{{ contato.telefone }}</td>
+                <td>{{ contato.email }}</td>
+                <td>{{ contato.categoria }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<div class="container mt-2">
+    <nav aria-label="Page navigation example">
+        <ul class="pagination pagination-sm">
+            {% if contatos.has_previous %}
+            <li class="page-item"><a class="page-link link-dark" href="?p=1&termo={{ request.GET.termo }}">&laquo; first</a></li>
+            <li class="page-item"><a class="page-link link-dark" href="?p={{ contatos.previous_page_number }}&termo={{ request.GET.termo }}">Previous</a></li>
+            {% endif %} {% for pagina in contatos.paginator.page_range %} {% if contatos.number == pagina %}
+            <li class="page-item active"><a class="page-link link-dark" href="?p={{ pagina }}&termo={{ request.GET.termo }}">{{ pagina }}</a></li>
+            {% else %}
+            <li class="page-item"><a class="page-link link-dark" href="?p={{ pagina }}&termo={{ request.GET.termo }}">{{ pagina }}</a></li>
+            {% endif %} {% endfor %} {% if contatos.has_next %}
+            <li class="page-item"><a class="page-link link-dark" href="?p={{ contatos.next_page_number }}&termo={{ request.GET.termo }}">Next</a></li>
+            <li class="page-item"><a class="page-link link-dark" href="?p={{ contatos.paginator.num_pages }}&termo={{ request.GET.termo }}">last &raquo;</a></li>
+            {% endif %}
+            <li class="page-item">
+                <a class="page-link link-dark">mostrando contato {{ contatos.start_index }} à {{ contatos.end_index }} | Total de  {{ contatos.paginator.count }} contatos</a>
+            </li>
+        </ul>
+    </nav>
+</div>
+{% endblock %}

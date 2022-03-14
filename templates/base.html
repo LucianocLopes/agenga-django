@@ -1,0 +1,34 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap_css -->
+    <link rel="stylesheet" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
+    <!-- Bootstrap_icons -->
+    <link rel="stylesheet" href="{% static 'vendor/bootstrap/icons/font/bootstrap-icons.css' %}">
+    <!-- Style_css -->
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <title>{% block title %} {% endblock %} Agenda</title>
+</head>
+
+<body>
+    <!-- navbar -->
+    {% include 'parciais/_navbar.html' %}
+    <!-- end navbar -->
+    <!-- content main -->
+    {% block content %} {% endblock %}
+    <!-- end content main -->
+    <!-- footer -->
+    {% include 'parciais/_footer.html' %}
+    <!-- end footer -->
+    <!-- Bootstrap_js -->
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <!-- main_js -->
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+<!-- content -->
+{% block content %}
+<div class="container">
+    {% include 'parciais/_messages.html' %}
+    <h1 class="mt-5 text-center">Cadastro de Usuário</h1>
+    <div class="row m-2 p-2 justify-content-center head-login">
+        <div class="col-lg-9" style="border: 1px solid black;">
+            <div class="row mb-2 bg-dark">
+                <p class="text-center mt-2" style="color:white;">Informe os dados abaixo para registrar um novo cadastro</p>
+            </div>
+            <div class="row">
+                <form method="post" action="{% url 'cadastro' %}" autocomplete="off">
+                    {% csrf_token %}
+                    <div class="row g-2 mb-2">
+                        <div class="col-lg-3 form-floating">
+                            <input type="text" name="nome" class="form-control" id="first-name" placeholder="informe o nome" value="{{ request.POST.nome }}">
+                            <label for="first-name">Nome</label>
+                        </div>
+                        <div class="col-lg-9 form-floating">
+                            <input type="text" name="sobrenome" class="form-control" id="last-name" placeholder="Informe o sobrenome" value="{{ request.POST.sobrenome }}">
+                            <label for="last-name">Sobrenome</label>
+                        </div>
+                    </div>
+                    <div class="row g-2 mb-2">
+                        <div class="col-lg-12 form-floating">
+                            <input type="email" name="email" class="form-control" id="email" placeholder="Informe o endereço de email" value="{{ request.POST.email }}">
+                            <label for="email">E-mail</label>
+                        </div>
+                    </div>
+                    <div class="row g-2 mb-2">
+                        <div class="col-lg-12 form-floating">
+                            <input type="text" name="usuario" class="form-control" id="username" placeholder="Informe o nome de usuário" value="{{ request.POST.usuario }}">
+                            <label for="username">Usuário</label>
+                        </div>
+                    </div>
+                    <div class="row g-2 mb-2">
+                        <div class="col-lg-12 form-floating">
+                            <input type="password" name="password" class="form-control" id="password" placeholder="Informe uma senha">
+                            <label for="password">Senha</label>
+                        </div>
+                    </div>
+                    <div class="row g-2 mb-2">
+                        <div class="col-lg-12 form-floating">
+                            <input type="password" name="password2" class="form-control" id="password2" placeholder="Repita a senha informada" value="">
+                            <label for="password2">Repita a senha</label>
+                        </div>
+                    </div>
+                    <div class="row g-2 mb-2 justify-content-end">
+                        <div class="col-2">
+                            <input type="submit" class="btn btn-dark" value="enviar">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

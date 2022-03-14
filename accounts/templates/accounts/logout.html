@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+<!-- content -->
+{% block content %}
+<div class="container">
+    {% include 'parciais/_messages.html' %}
+    <p class="text-center">Obrigado por usar o nosso sistema!</p>
+    <a href="{% url 'login' %}">
+        <p class="text-center">Acessar novamente</p>
+    </a>
+</div>
+{% endblock %}

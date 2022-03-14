@@ -1,0 +1,26 @@
+/* new Contacts */
+
+.new-contact {
+    max-height: 65vh;
+    overflow-y: auto;
+}
+
+
+/* Contacts */
+
+#list-contacts {
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.image-contact {
+    max-width: 250px;
+}
+
+
+/* footer */
+
+.footer {
+    border-top: 1px solid #222;
+    padding: 1rem;
+}

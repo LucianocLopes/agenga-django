@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+<!-- content -->
+{% block content %}
+<div class="container">
+    {% include 'parciais/_messages.html' %}
+    <h1 class="mt-5 text-center">Olá {{ user.first_name }} {{ user.last_name }}</h1>
+</div>
+<hr>
+<div class="container new-contact">
+    <form class="form-control-sm" action="{% url 'dashboard' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <table class="table table-hover">
+            {{ form }}
+            <tr>
+                <td colspan="2">
+                    <input type="submit" class="btn btn-dark" value="Enviar">
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+{% endblock %}
